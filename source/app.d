@@ -11,5 +11,4 @@ static ushort PORT = 9000;
 void main(string[] args) {
 	auto ark = new Arkenstone(ADDR, PORT);
 	ark.run();
-	
 }

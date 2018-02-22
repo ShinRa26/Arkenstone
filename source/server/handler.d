@@ -38,21 +38,22 @@ private:
     string readFromClient() {
         immutable auto recv = this.client.receive(buffer);
         if (recv == -1 || recv == 0) {
-            writefln("Client %s has disconnected from the server.\n", this.client.remoteAddress().toAddrString());
+            writefln("Client %s has disconnected from the server.\n", this.client.remoteAddress().toString());
             return null;
         }
         return processBuffer(buffer);
     }
 
     void parseMessage(string msg) {
-        auto tags = msg.split(": ");
+        auto tags = msg.split("::");
 
-        switch(tags[0]) {
+        /// TODO::Split based off of [PLATFORM_NAME]::[TAG]::MESSAGE (IF ANY)
+        switch(tags[1]) {
             case "INIT":
-                writefln("Init command received from %s\n", tags[1]);
+                writefln("Init command received from %s\n", tags[0]); /// Debug
                 break;
             case "LOG":
-                writefln("Logging message received from %s\n", tags[1]);
+                writefln("Logging message %s: %s\n", tags[0], tags[2]); /// Debug
                 break;
             default:
                 break;
