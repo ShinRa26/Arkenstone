@@ -1,0 +1,9 @@
+{
+	"name": "arkenstone",
+	"authors": [
+		"Graham Keenan"
+	],
+	"description": "Message logging over a network",
+	"copyright": "Copyright © 2018, Graham Keenan",
+	"license": "LGPLv3"
+}

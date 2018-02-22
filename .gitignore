@@ -1,0 +1,17 @@
+.dub
+docs.json
+__dummy.html
+docs/
+arkenstone.so
+arkenstone.dylib
+arkenstone.dll
+arkenstone.a
+arkenstone.lib
+arkenstone-test-*
+*.exe
+*.o
+*.obj
+*.lst
+arkenstone
+arkenstone.exe
+test/
