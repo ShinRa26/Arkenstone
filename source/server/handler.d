@@ -4,6 +4,7 @@ import std.stdio;
 import std.socket;
 import core.thread;
 import std.conv : to;
+import std.array : split;
 
 class Handler : Thread {
 public:
@@ -13,7 +14,8 @@ public:
     }
 
     ~this() {
-
+        this.client.shutdown(SocketShutdown.BOTH);
+        this.client.close();
     }
 
 private:
@@ -22,22 +24,39 @@ private:
 
     void run() {
         while(true) {
-            string msg = readFromClient();
+            auto msg = readFromClient();
+            if (msg is null) {
+                break;
+            }
             parseMessage(msg);
             clearBuffer(buffer);
-
-            /// TODO::Handle disconnects
         }
+
+        destroy(this);
     }
 
     string readFromClient() {
-        this.client.receive(buffer);
+        immutable auto recv = this.client.receive(buffer);
+        if (recv == -1 || recv == 0) {
+            writefln("Client %s has disconnected from the server.\n", this.client.remoteAddress().toAddrString());
+            return null;
+        }
         return processBuffer(buffer);
     }
 
     void parseMessage(string msg) {
-        /// TODO::Parse message for tags
-        /// TODO::Create logs files/folders
+        auto tags = msg.split(": ");
+
+        switch(tags[0]) {
+            case "INIT":
+                writefln("Init command received from %s\n", tags[1]);
+                break;
+            case "LOG":
+                writefln("Logging message received from %s\n", tags[1]);
+                break;
+            default:
+                break;
+        }
     }
 
     string processBuffer(ubyte[] buf) {
