@@ -70,6 +70,7 @@ private:
         /// TODO::Split based off of [PLATFORM_NAME]::[TAG]::MESSAGE (IF ANY)
         switch(tags[1]) {
             case "INIT":
+                writefln("New connection from %s (%s)", this.client.remoteAddress().toString(), tags[0]);
                 this.fh.createClientFolder(tags[0]);
                 break;
             case "LOG":
