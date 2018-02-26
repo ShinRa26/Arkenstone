@@ -11,6 +11,9 @@ class Arkenstone {
 public:
     /***
     * Constructs the server with the address and port
+    * Params:
+    *   addr = Address to connect to
+    *   port = Port to bind to
     */
     this(string addr, ushort port) {
         this.server = new TcpSocket();
