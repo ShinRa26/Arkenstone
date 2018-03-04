@@ -1,10 +1,10 @@
+import server.backup;
 import server.arkenstone;
 import server.filehandler;
-import server.backup;
 
-import std.datetime.systime;
 import core.time;
 import std.stdio;
+import std.datetime.systime;
 
 /// Connection address
 static string ADDR = "127.0.0.1";

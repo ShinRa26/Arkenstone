@@ -3,8 +3,8 @@ module server.filehandler;
 import std.file;
 import std.path;
 import std.stdio;
-import std.datetime;
 import std.string;
+import std.datetime;
 
 /**
 * Class for handling all the File writing and path generation for a client
