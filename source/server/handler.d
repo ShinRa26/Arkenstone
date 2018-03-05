@@ -67,7 +67,7 @@ private:
     void parseMessage(string msg) {
         auto tags = msg.split("::");
 
-        /// TODO::Split based off of [PLATFORM_NAME]::[TAG]::MESSAGE (IF ANY)
+        /// [PLATFORM_NAME]::[TAG]::MESSAGE (IF ANY)
         switch(tags[1]) {
             case "INIT":
                 writefln("New connection from %s (%s)", this.client.remoteAddress().toString(), tags[0]);
