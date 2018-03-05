@@ -74,7 +74,7 @@ private:
                 this.fh.createClientFolder(tags[0]);
                 break;
             case "LOG":
-                this.fh.logMessage(tags[2]);
+                this.fh.logMessage(tags[2]); /// Logs the message
                 break;
             default:
                 break;

@@ -5,6 +5,7 @@ import std.path;
 import std.stdio;
 import std.string;
 import std.datetime;
+import std.datetime.systime;
 
 /**
 * Class for handling all the File writing and path generation for a client
@@ -38,8 +39,10 @@ public:
     *   msg = Message to write to log
     */
     void logMessage(string msg) {
+        auto time = Clock.currTime().toString().split(".")[0]; /// Time without decimal
         auto log = File(this.curLogFile, "a");
-        log.write(msg~"\n");
+        auto logMsg = time ~ " :: " ~ msg ~ "\n";
+        log.write(logMsg);
         log.close();
     }
 
