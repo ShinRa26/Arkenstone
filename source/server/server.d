@@ -33,7 +33,9 @@ public:
         assert(this.server.isAlive);
         this.server.blocking = true;
         this.server.bind(new InternetAddress(this.address, this.port));
-        writefln("*** Arkenstone online %s:%d ***", this.address, this.port);
+        writefln("\t\n\t    The king beneath the mountain, the king of carven stone.\t\n
+            The lord of silver fountains, shall come unto his own.\t\n
+            \t*** Arkenstone online %s:%d ***\n", this.address, this.port);
         this.server.listen(1);
 
         while(true) {
